@@ -3,5 +3,5 @@ A complete refactor and different take on a traditional attack script for exploi
 
 How to build?
 ```
-gcc *.c -D DEBUG -o xml
+gcc *.c -D DEBUG -pthread -o xml
 ```
