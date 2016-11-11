@@ -55,6 +55,7 @@ BOOL utils_list_push(const char* file_loc) {
       printf("Could not open file -> %s\n", file_loc);
     #endif
 
+    fclose(file_handler);
     return FALSE;
   }
 
