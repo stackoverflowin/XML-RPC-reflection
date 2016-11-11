@@ -15,7 +15,7 @@ static void* flood_worker(void* attack_data) {
     printf("Starting worker for target -> %s\n", attack->target);
   #endif
 
-  conn_t* conn = malloc(sizeof(conn_t));
+  conn_t* conn = calloc(1, sizeof(conn_t));
   conn->client_port = 80;
 
   while(end_time > time(NULL)) {
