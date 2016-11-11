@@ -48,7 +48,7 @@ int vector_size() {
 }
 
 struct node* vector_rand() {
-  uint vector_index = (rand() % vector_size());
+  uint vector_index = (rand() & vector_size());
   uint current_index = 0;
   struct node* node_tmp;
   FOR_EACH(node_start, node_tmp) {
