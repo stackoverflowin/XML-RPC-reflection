@@ -64,17 +64,20 @@ socket_t socket_create(conn_t* con) {
 
   if(SOCK_ASSERT(fcntl(sock_desc, F_SETFL,
                               fcntl(sock_desc, F_GETFL, NULL) | O_NONBLOCK))) {
+      freeaddrinfo(addr_res);
       close(sock_desc);
       return SOCK_ERROR;
     }
 
   if(SOCK_ASSERT(setsockopt(sock_desc, IPPROTO_TCP, TCP_NODELAY, &enable_flag,
                                                               sizeof(int)))) {
+    freeaddrinfo(addr_res);
     close(sock_desc);
     return SOCK_ERROR;
   }
 
   if(!sock_connect(sock_desc, addr_res)) {
+    freeaddrinfo(addr_res);
     close(sock_desc);
     return SOCK_ERROR;
   }
