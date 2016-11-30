@@ -29,7 +29,7 @@ char* xml_rand_wp() {
 
   char version_buf[16];
   ZERO_BUF(&version_buf);
-  snprintf(version_buf, sizeof(version_buf), "%d.%d.%d", major_ver, minor_ver,build_ver);
+  snprintf(version_buf, sizeof(version_buf), "%d.%d.%d", major_ver, minor_ver, build_ver);
 
   char* rand_ptr = calloc(strlen(version_buf), sizeof(char));
   strncpy(rand_ptr, version_buf, strlen(version_buf));
