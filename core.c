@@ -9,11 +9,13 @@
 #include "utils.h"
 #include "vector.h"
 
+#include <ctype.h>
+
 void core_handle_exit(int caught_sig) {
   signal(caught_sig, SIG_IGN);
   printf("\nAre you sure you want to exit? [y/n]: ");
-  char user_select = getc(stdin);
-  if(user_select == 'y' || user_select == 'Y') {
+  char user_select = tolower(getc(stdin));
+  if(user_select == 'y') {
     exit(EXIT_SUCCESS);
   }
 }
