@@ -10,6 +10,7 @@
 #include "vector.h"
 
 #include <ctype.h>
+#include <signal.h>
 
 void core_handle_exit(int caught_sig) {
   signal(caught_sig, SIG_IGN);
