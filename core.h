@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <string.h>
 #include <signal.h>
+#include <time.h>
 
 #define MAX_PARAM_SZ 128
 
