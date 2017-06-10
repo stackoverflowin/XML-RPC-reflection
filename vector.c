@@ -5,20 +5,23 @@
 struct node* node_start = NULL;
 
 void vector_push(char* node_path) {
-  if(node_path != NULL) {
-    url_t* url_parts = utils_format_url(node_path);
-    if(url_parts != NULL) {
-      struct node* node_link = malloc(sizeof(struct node));
-      ZERO_BUF(node_link);
+  if(node_path == NULL)
+    return;
+  
+  url_t* url_parts = utils_format_url(node_path);
+  
+  if(url_parts != NULL)
+    return;
+  
+  struct node* node_link = malloc(sizeof(struct node));
+  ZERO_BUF(node_link);
 
-      node_link->host = url_parts->url_host;
-      node_link->path = url_parts->url_uri;
-      node_link->next_ptr = node_start;
-
-      node_start = node_link;
-    }
-    free(url_parts);
-  }
+  node_link->host = url_parts->url_host;
+  node_link->path = url_parts->url_uri;
+  node_link->next_ptr = node_start;
+  node_start = node_link;
+   
+  free(url_parts);
 }
 
 static void vector_destory_element(struct node* element) {
